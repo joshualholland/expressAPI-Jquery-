@@ -26,10 +26,30 @@
         <div class="form-group">
             <label for="chirp">Chirp:</label>
             <input type="text" class="form-control" placeholder="What's chirpin'?" id="chirp">
-            <button class="btn btn-secondary m-2">Chirp It!</button>
+            <button class="btn btn-secondary m-2" id="newChirp">Chirp It!</button>
         </div>
     </div>
     <div class="chirps">
+        <div class="modal fade" id="chirpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Chirps</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Edit Chirp Here" id="editText">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="confirm-edit">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
