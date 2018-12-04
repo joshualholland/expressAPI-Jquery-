@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id?', (req, res) => {
-    chirpsStore.UpdateChirp(req.body)
-    res.send('Updated')
+    chirpsStore.UpdateChirp(req.params.id, req.body)
+    res.send(chirpsStore.GetChirps());
 });
 
 router.delete('/:id?', (req, res) => {

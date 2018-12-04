@@ -16,7 +16,7 @@ const displayChirps = (data) => {
                 <div class="card-body">
                     <h5 class="card-title">${chirp.user}</h5>
                     <p class="card-text">${chirp.chirp}</p>
-                    <h6 class="card-subtitle mb-2 text-muted">Chirp: ${chirp.id}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted editChirp" id="${chirp.id}">${chirp.id}</h6>
                     <button type="button" class="btn btn-danger btn-sm" id="delete-chirp" onclick="deleteChirp(${chirp.id})">X</button>
                     <button type="button" class="btn btn-secondary btn-sm" id="edit-chirp" data-toggle="modal" data-target="#chirpModal">Edit</button>
                 </div>
@@ -63,16 +63,18 @@ const deleteChirp = (id) => {
 };
 
 $('#confirm-edit').click(() => {
+    let id = $('.editChirp').attr("id");
     let user = $('#user').val();
     let chirp = $('#editText').val();
     let chirpObject = {
+        id,
         user,
         chirp
     }
     $.ajax({
         type: 'PUT',
-        url: `/api/chirps/`,
-        data: chirpObject
+        url: `/api/chirps/${id}`,
+        data: chirpObject,
     })
         .then(res => JSON.parse(res))
         .then(data => displayChirps(data))
