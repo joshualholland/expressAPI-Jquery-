@@ -14,7 +14,7 @@ const displayChirps = (data) => {
         let card = [
             `<div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">${chirp.user}</h5>
+                    <h5 class="card-title" id="chirpUser">${chirp.user}</h5>
                     <p class="card-text">${chirp.chirp}</p>
                     <h6 class="card-subtitle mb-2 text-muted editChirp" id="${chirp.id}">${chirp.id}</h6>
                     <button type="button" class="btn btn-danger btn-sm" id="delete-chirp" onclick="deleteChirp(${chirp.id})">X</button>
@@ -64,7 +64,7 @@ const deleteChirp = (id) => {
 
 $('#confirm-edit').click(() => {
     let id = $('.editChirp').attr("id");
-    let user = $('#user').val();
+    let user = $('#chirpUser').text();
     let chirp = $('#editText').val();
     let chirpObject = {
         id,
